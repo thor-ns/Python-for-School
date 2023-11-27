@@ -13,3 +13,5 @@ print(num1, "*", num2, "is", num1 * num2)
 print(num1, "%", num2, "is", num1 % num2)
 print(num1, "/", num2, "is", num1 / num2)
 print(num1, "//", num2, "is",num1 // num2)
+
+print("How does this affect the ecosystem of the ocean?")
