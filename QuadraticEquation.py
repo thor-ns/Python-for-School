@@ -1,4 +1,5 @@
 from math import *
+import cmath
 
 a = input("Enter a: ")
 b = input("Enter b: ")
@@ -19,7 +20,7 @@ def positive_quadratic_equation(a, b, c):
         exit()
     #checks if a is equal to 0. If true then it stops the program
     
-    root1 = (-b + sqrt(((b**2) - (4*a*c)))) / (2*a)
+    root1 = (-b + cmath.sqrt(complex((b**2) - (4*a*c)))) / (2*a)
     print("the first root is " + str(root1))
     
 
@@ -31,7 +32,7 @@ def negative_quadratic_equation(a, b, c):
         exit()
     #another a = 0 checker
 
-    root2 = (-b - sqrt(((b**2) - (4*a*c)))) / (2*a)
+    root2 = (-b - cmath.sqrt(complex((b**2) - (4*a*c)))) / (2*a)
     print("The second root is " + str(root2))
 
 
