@@ -37,6 +37,5 @@ def negative_quadratic_equation(a, b, c):
 
 def combined_quadratics(positive, negative):
     return(positive, negative)
-#simply puts both root return functions into a function
 
 combined_quadratics(positive_quadratic_equation(int(a), int(b), int(c)), negative_quadratic_equation(int(a), int(b), int(c)))
