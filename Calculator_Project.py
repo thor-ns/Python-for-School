@@ -1,42 +1,42 @@
 #Used as the "main page" to select which function you want
 def second_greeting():
-    op = input("Which function of the calculator do you want to use?: ")
-    if op == "addition":
+    operation = input("Which function of the calculator do you want to use?: ")
+    if operation == "addition":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         addition(x, y)
-    elif op == "subtraction":
+    elif operation == "subtraction":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         subtraction(x, y)
-    elif op == "multiplication":
+    elif operation == "multiplication":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         multiply(x, y)
-    elif op == "division":
+    elif operation == "division":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         division(x, y)
-    elif op == "MOD":
+    elif operation == "MOD":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")  
         MOD(x, y)
-    elif op == "power":
+    elif operation == "power":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         power(x, y)
-    elif op == "root":
+    elif operation == "root":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         root(x, y)
-    elif op == "factorial":
+    elif operation == "factorial":
         x = input("Which number do you want to find the factorial of: ")
         factorial(x)   
-    elif op == "GCF":
+    elif operation == "GCF":
         x = input("Enter first number: ")
         y = input("Enter second number: ")
         GCF(x, y)
-    elif op == "exit":
+    elif operation == "exit":
         print("Are you sure you want to quit the \"Calculator\"")
         leaving = input("Type Y to quit and N go back: ")
         if leaving == "Y":
@@ -45,7 +45,7 @@ def second_greeting():
             second_greeting()
         else:
             print("Please enter Y or N")
-    elif op == "help":
+    elif operation == "help":
         help()
     else:
         print("Error, not a function of the calculator")
@@ -216,39 +216,39 @@ def GCF(x, y):
 print("""Welcome to the calculator, the functions available are: addition, subtraction, division, multiplication, MOD/remainder, power, root, 
 factorial""")
 print("If you need help with any of the functions type \"help\"")
-op = input("Which function of the calculator do you want to use?: ")
-if op == "addition":
+operation = input("Which function of the calculator do you want to use?: ")
+if operation == "addition":
     x = input("Enter your first number: ")
     y = input("Enter your second number: ")
     addition(x, y)
-elif op == "subtraction":
+elif operation == "subtraction":
     x = input("Enter your first number: ")
     y = input("Enter your second number: ")
     subtraction(x, y)
-elif op == "multiplication":
+elif operation == "multiplication":
     x = input("Enter your first number: ")
     y = input("Enter your second number: ")
     multiply(x, y)
-elif op == "division":
+elif operation == "division":
     x = input("Enter your first number: ")
     y = input("Enter your second number: ")
     division(x, y)
-elif op == "MOD":
+elif operation == "MOD":
     x = input("Enter your first number: ")
     y = input("Enter your second number: ")
     MOD(x, y)
-elif op == "power":
+elif operation == "power":
     x = input("Enter your first number: ")
     y = input("Enter your second number: ")
     power(x, y)
-elif op == "root":
+elif operation == "root":
     x = input("Enter your first number: ")
     y = input("Enter your second number: ")
     root(x, y)
-elif op == "factorial":
+elif operation == "factorial":
     x = input("Which number do you want to find the factorial of: ")
     factorial(x) 
-elif op == "exit":
+elif operation == "exit":
     print("Are you sure you want to quit \"Calculator\"")
     leaving = input("Type Y to quit and N go back: ")
     if leaving == "Y":
@@ -258,11 +258,11 @@ elif op == "exit":
     else:
         print("Please enter Y or N")
         second_greeting()
-elif op == "GCF":
+elif operation == "GCF":
     x = input("Enter first number: ")
     y = input("Enter second number: ")
     GCF(x, y)
-elif op == "help":
+elif operation == "help":
     help()
 else:
     print("Error, not a function of the calculator")
