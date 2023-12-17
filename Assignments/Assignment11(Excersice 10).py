@@ -7,7 +7,7 @@ int(sC)
 
 def tri(a, b, c):
     isTriangle = True
-    if int(a) <= (int(b) + int(c)) and int(b) <= (int(a) + int(c)) and int(c) <= (int(a) + int(b)):
+    if int(a) < (int(b) + int(c)) and int(b) < (int(a) + int(c)) and int(c) < (int(a) + int(b)):
         isTriangle = True
         print(f"{isTriangle}, these sides make a triangle")
     else:
