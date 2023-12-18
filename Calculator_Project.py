@@ -1,54 +1,61 @@
-#Used as the "main page" to select which function you want
-def second_greeting():
-    operation = input("Which function of the calculator do you want to use?: ")
-    if operation == "addition":
+def second_greeting(): #Used as the "main page" to select which function you want. Hosts the logic for which operation the user wants to use and then calls the respective function
+    operation = input("Enter the corresponding number for the function you want to use: ")
+    if operation == "1":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         addition(x, y)
-    elif operation == "subtraction":
+    elif operation == "2":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         subtraction(x, y)
-    elif operation == "multiplication":
+    elif operation == "3":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         multiply(x, y)
-    elif operation == "division":
+    elif operation == "4":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         division(x, y)
-    elif operation == "MOD":
+    elif operation == "5":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")  
         MOD(x, y)
-    elif operation == "power":
+    elif operation == "6":
         x = input("Enter your first number: ")
         y = input("Enter your second number: ")
         power(x, y)
-    elif operation == "square root":
+    elif operation == "7":
         x = input("Enter your first number: ")
         squareRoot(x)
-    elif operation == "factorial":
+    elif operation == "8":
         x = input("Which number do you want to find the factorial of: ")
         factorial(x)   
-    elif operation == "GCF":
+    elif operation == "9":
         x = input("Enter first number: ")
         y = input("Enter second number: ")
         GCF(x, y)
+    elif operation == "10":
+        x = input("Enter first number: ")
+        y = input("Enter second number: ")
+        LCM(x, y)
     elif operation == "exit":
-        print("Are you sure you want to quit the \"Calculator\"")
-        leaving = input("Type Y to quit and N go back: ")
-        if leaving == "Y":
-            exit()
-        elif leaving == "N":
-            second_greeting()
-        else:
-            print("Please enter Y or N")
-    elif operation == "help":
-        help()
-    else:
-        print("Error, not a function of the calculator")
+        Exit()
+
+def Exit():
+    print("Are you sure you want to quit the \"Calculator\"")
+    leaving = input("Type Y to quit and N go back: ")
+    if leaving == "Y":
+        exit()
+    elif leaving == "y":
+        exit()
+    elif leaving == "N":
         second_greeting()
+    elif leaving == "n":
+        second_greeting()
+    else:
+        print("Please enter Y or N")
+        Exit()
+#I made exiting a function so that I could call itself again. Exit() is my function name, not to be confused with the other exit() function
 
 def help():
     question = input("Which function do you need help with? ")
@@ -98,7 +105,8 @@ def addition(x, y):
         print(f"{x} + {y} is equal to {add}")
     except:
         print("Error, please enter a numeric value")
-    second_greeting()
+    finally:
+        second_greeting()
     #addition function
 
 def subtraction(x, y):
@@ -109,7 +117,8 @@ def subtraction(x, y):
         print(f"{x} - {y} is equal to {sub}")
     except:
         print("Error, please enter a numeric value")
-    second_greeting()
+    finally:
+        second_greeting()
     #subtraction function
 
 
@@ -121,7 +130,8 @@ def multiply(x, y):
         print(f"{x} * {y} is equal to {mul}")
     except:
         print("Error, please enter a numeric value")
-    second_greeting()
+    finally:
+        second_greeting()
     #multiplication function
 
 def division(x, y):
@@ -134,7 +144,8 @@ def division(x, y):
         print("Error, y cannot be zero")
     except:
         print("Error, please enter a numeric value")
-    second_greeting()
+    finally:
+        second_greeting()
     #division function
 
 def MOD(x, y):
@@ -147,20 +158,29 @@ def MOD(x, y):
         print("Error, y cannot be zero")
     except:
         print("Error, please enter a numeric value")
-    second_greeting()
+    finally:
+        second_greeting()
     #remainder function
 
 def power(x, y):
     try:
         x = float(x)
-        y = y.split("/")
-        p = float(y[0])
-        q = float(y[1])
-        pow = x ** (p/q)
-        print(f"{x} to the power of {p} / {q} is equal to {pow}")
-    except:
+        if y.find("/"):
+            y = y.split("/")
+            p = float(y[0])
+            q = float(y[1])
+            pow = x ** (p/q)
+            print(f"{x} to the power of {p} / {q} is equal to {pow}")
+        else:
+            y = float(y)
+            pow = x ** y
+            print(f"{x} to the power of {y} is equal to {pow}")
+    except TypeError:
         print("Error, please enter a numeric value")
-    second_greeting()
+    except:
+        print("Error")
+    finally:
+        second_greeting()
     #power function
 
 def squareRoot(x):
@@ -168,12 +188,15 @@ def squareRoot(x):
         x = float(x)
         root = x ** (1 / 2)
         if type(root) == type(1j):
-            print("The answer is a complex number")
+            print("The number you want to square root cannot be negative!")
         else:
             print(f"The square root of {x} is equal to {root}")
     except TypeError:
         print("Error, must be a numeric value")
-    second_greeting()
+    except:
+        print("Error")
+    finally:
+        second_greeting()
     #square root function
 
 def factorial(x):
@@ -194,7 +217,8 @@ def factorial(x):
             print(f"The factorial of {x} is {output}") 
     except TypeError:
         print("Error, must be a numeric value")
-    second_greeting()  
+    finally:
+        second_greeting()  
     #factorial function
 
 def GCF(x, y):
@@ -217,13 +241,56 @@ def GCF(x, y):
                     print(f"the common factor of {x} and {y} is {commonFactor}")
                     break
                 place -= 1
-    except:
+    except TypeError:
         print("Error, please enter a numeric value")
-    second_greeting()
+    except:
+        second_greeting()
     #greatest common factor function
+
+
+def LCM(x, y):
+    try:
+        x = int(x)
+        y = int(y)
+        if x == 0:
+            print("Error, cannot be 0")
+        elif y == 0:
+            print("Error, cannot be 0")
+        elif x == y:
+            print(f"The LCM of {x} and {y} is {x}")
+        elif x == -abs(x):
+            print("Please enter positive integers")
+        elif y == -abs(y):
+            print("Please enter positive integers")
+        else:
+            place = x
+            while place > 0:
+                if x % place == 0 and y % place == 0:
+                    commonFactor = place
+                place -= 1
+            lcm = (x*y)/commonFactor
+            print(f"The LCM of {x} and {y} is {lcm}") 
+    except TypeError:
+        print("Error, must enter a numeric value")
+    except:
+        print("Error")
+    finally:
+        second_greeting()
 #end of all mathematical functions 
 
-print("""Welcome to the calculator, the functions available are: addition, subtraction, division, multiplication, MOD, power, square root, 
-factorial""")
-print("If you need help with any of the functions type \"help\"")
-second_greeting()
+def main(): #This main function is simply here in case I would need to call it somewhere
+    print("""Welcome to Dom's calculator, the functions available are: 
+        1: Addition
+        2: Subtraction
+        3: Division
+        4: Multiplication
+        5: MOD
+        6: Power
+        7: Square Root
+        8: Factorial
+        9: GCF
+        10: LCM""")
+    print("If you need help with any of the functions type \"help\"")
+    print("Type \"exit\" if you want to quit the application")
+    second_greeting()
+main()
