@@ -1,3 +1,4 @@
+#start of accessory functions
 def second_greeting(): #Used as the "main page" to select which function you want. Hosts the logic for which operation the user wants to use and then calls the respective function
     operation = input("Enter the corresponding number for the function you want to use: ")
     if operation == "1":
@@ -40,6 +41,9 @@ def second_greeting(): #Used as the "main page" to select which function you wan
         LCM(x, y)
     elif operation == "exit":
         Exit()
+    else:
+        print("Not a valid function of the calculator!")
+        second_greeting()
 
 def Exit():
     print("Are you sure you want to quit the \"Calculator\"")
@@ -90,12 +94,16 @@ def help():
         print("""Restrictions: first number must be an integer""")
     elif question == "factorial":
         print("finds the factorial the number given ex. 20x19x18...3x2x1")
-        print("""Restrictions: number must be a POSITIVE whole number""")
+        print("""Restrictions: both numbers must be POSITIVE whole number""")
     elif question == "GCF":
         print("finds the (GCF) greatest common factor between the 2 given numbers")
+        print("""Restrictions: both numbers must be POSITIVE whole numbers that are greater than 0""")
+    elif question == "LCM":
+        print("finds the (LCM) lowest common multiple between the 2 given numbers")
     else:
         print("Error, not a function of the calculator")
-    
+#ends of accessory functions
+
 #start of all the mathematical functions
 def addition(x, y):
     try:
@@ -103,8 +111,12 @@ def addition(x, y):
         y = float(y)
         add = x + y
         print(f"{x} + {y} is equal to {add}")
-    except:
+    except TypeError:
         print("Error, please enter a numeric value")
+    except ValueError:
+        print("Error, not a number")
+    except:
+        print("Error")
     finally:
         second_greeting()
     #addition function
@@ -115,8 +127,12 @@ def subtraction(x, y):
         y = float(y)
         sub = x - y
         print(f"{x} - {y} is equal to {sub}")
-    except:
+    except TypeError:
         print("Error, please enter a numeric value")
+    except ValueError:
+        print("Error, not a number")
+    except:
+        print("Error")
     finally:
         second_greeting()
     #subtraction function
@@ -128,8 +144,12 @@ def multiply(x, y):
         y = float(y)
         mul = x * y
         print(f"{x} * {y} is equal to {mul}")
-    except:
+    except TypeError:
         print("Error, please enter a numeric value")
+    except ValueError:
+        print("Error, not a number")
+    except:
+        print("Error")
     finally:
         second_greeting()
     #multiplication function
@@ -142,8 +162,12 @@ def division(x, y):
         print(f"{x} / {y} is equal to {div}")
     except ZeroDivisionError:
         print("Error, y cannot be zero")
-    except:
+    except TypeError:
         print("Error, please enter a numeric value")
+    except ValueError:
+        print("Error, not a number")
+    except:
+        print("Error")
     finally:
         second_greeting()
     #division function
@@ -156,8 +180,12 @@ def MOD(x, y):
         print(f"the MOD of {x} / {y} is {mod}")
     except ZeroDivisionError:
         print("Error, y cannot be zero")
-    except:
+    except TypeError:
         print("Error, please enter a numeric value")
+    except ValueError:
+        print("Error, not a number")
+    except:
+        print("Error")
     finally:
         second_greeting()
     #remainder function
@@ -169,19 +197,21 @@ def power(x, y):
             y = y.split("/")
             p = float(y[0])
             q = float(y[1])
-            pow = x ** (p/q)
+            pow = (x) ** (p/q)
             print(f"{x} to the power of {p} / {q} is equal to {pow}")
         else:
             y = float(y)
-            pow = x ** y
+            pow = (x) ** y
             print(f"{x} to the power of {y} is equal to {pow}")
     except TypeError:
         print("Error, please enter a numeric value")
+    except ValueError:
+        print("Error, not a number")
     except:
         print("Error")
     finally:
         second_greeting()
-    #power function
+    #power function. If y is a fraction it puts it into fractional form otherwise just floats y and powers y to x
 
 def squareRoot(x):
     try:
@@ -193,11 +223,13 @@ def squareRoot(x):
             print(f"The square root of {x} is equal to {root}")
     except TypeError:
         print("Error, must be a numeric value")
+    except ValueError:
+        print("Error, not a number")
     except:
         print("Error")
     finally:
         second_greeting()
-    #square root function
+    #square root function. Takes the square root of the user input
 
 def factorial(x):
     try:
@@ -217,9 +249,13 @@ def factorial(x):
             print(f"The factorial of {x} is {output}") 
     except TypeError:
         print("Error, must be a numeric value")
+    except ValueError:
+        print("Error, not a number")
+    except:
+        print("Error")
     finally:
         second_greeting()  
-    #factorial function
+    #factorial function. Uses a while loop to continue multiplying until it reaches x, the number the user inputed
 
 def GCF(x, y):
     try:
@@ -243,9 +279,13 @@ def GCF(x, y):
                 place -= 1
     except TypeError:
         print("Error, please enter a numeric value")
+    except ValueError:
+        print("Error, not a number")
     except:
+        print("Error")
+    finally:
         second_greeting()
-    #greatest common factor function
+    #greatest common factor function. 
 
 
 def LCM(x, y):
@@ -267,15 +307,20 @@ def LCM(x, y):
             while place > 0:
                 if x % place == 0 and y % place == 0:
                     commonFactor = place
+                    break
                 place -= 1
-            lcm = (x*y)/commonFactor
+            lcm = ((x*y)/commonFactor)
+            print(commonFactor)
             print(f"The LCM of {x} and {y} is {lcm}") 
     except TypeError:
         print("Error, must enter a numeric value")
+    except ValueError:
+        print("Error, not a number")
     except:
         print("Error")
     finally:
         second_greeting()
+#Lowest common multiple function. Uses this formula: lcm = (x*y)/gcf
 #end of all mathematical functions 
 
 def main(): #This main function is simply here in case I would need to call it somewhere
